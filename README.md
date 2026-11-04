@@ -29,6 +29,8 @@ pip install -r requirements.txt
 
 Pre-trained models can be downloaded from [baidu drive](https://pan.baidu.com/s/1ER60IJ0e-qLCCCtKcTIl4A?pwd=1234)
 
+> **Note:** the released checkpoints were trained with an earlier version of the code that distilled the RGB features towards the LiDAR features. The current code follows the paper and distills the radar features (after the RLCMA module). Inference is unaffected, so the released checkpoints can be used as they are.
+
 ## Datasets
 
 We have produced calibration datasets based on the original published [NTU4DRaDLM](https://github.com/junzhang2016/NTU4DRadLM) and [Dual-Radar](https://github.com/adept-thu/Dual-Radar) datasets.

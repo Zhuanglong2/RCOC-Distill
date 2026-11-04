@@ -509,7 +509,10 @@ class TestNet(nn.Module):
         if test is True:
             return transl, rot
         else:
-            return transl, rot, features1, features2_distillation
+            # Cross-modal distillation (paper Sec. III): the radar features after the
+            # RLCMA module are the student and the LiDAR features are the teacher.
+            # The loss in losses.py is MSE(features2_distillation[4], features2[4]).
+            return transl, rot, features2, features2_distillation
 
 
 import torch
