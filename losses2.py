@@ -101,7 +101,7 @@ class DistancePoints3D(nn.Module):
             point_cloud_out = rotate_forward(point_cloud_out, RT_total)
 
             error = (point_cloud_out - point_cloud_gt).norm(dim=0)
-            error.clamp(100.)
+            error = error.clamp(max=100.)
             total_loss += error.mean()
 
         #end = time.time()
@@ -163,7 +163,7 @@ class CombinedLoss(nn.Module):
             point_cloud_out = rotate_forward(point_cloud_out, RT_total)
 
             error = (point_cloud_out - point_cloud_gt).norm(dim=0)  # (N,)
-            error.clamp(100.)   # (N,)
+            error = error.clamp(max=100.)   # (N,)
             point_clouds_loss += error.mean()
 
         if predict_depth_image is not None:
